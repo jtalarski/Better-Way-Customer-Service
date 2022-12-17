@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+
+
+{% block content %}
+<div class="container w-50">
+{%  for item in values %}
+    {% if item.customer==session['id'] %}
+    <h4>Current packages for: {{item.fname}} {{item.lname}}</h4>
+<table class="table table-stripped">
+    <tr>
+      <td>Movies Package</td>
+      {% if item.movie_pack==False %}
+        <td>You Do Not Have This</td>
+       {% else %}
+        <td>You have this package</td>
+      {% endif %}
+    </tr>
+     <tr>
+      <td>Sport Package</td>
+      {% if item.sports_pack==False %}
+        <td>You Do Not Have This</td>
+       {% else %}
+        <td>You have this package</td>
+      {% endif %}
+    </tr>
+   <tr>
+      <td>News Package</td>
+      {% if item.news_pack==False %}
+        <td>You Do Not Have This</td>
+       {% else %}
+        <td>You have this package</td>
+      {% endif %}
+    </tr>
+   <tr>
+      <td>Spanish Package</td>
+      {% if item.spanish_pack==False %}
+        <td>You Do Not Have This</td>
+       {% else %}
+        <td>You have this package</td>
+      {% endif %}
+    </tr>
+</table>
+
+
+{% endif %}
+{% endfor %}
+</div>
+
+<div class="container w-50">
+  <form method="POST" action="">
+{{ form.hidden_tag() }}
+<fieldset>
+<legend class="border-bottom mb-4"><strong>What Channel Packages Would You Like.</strong><br> <small>Note you must confirm that you want to keep existing packages</small></legend>
+<div class="form-group">
+
+<div class="form-group">
+  {{ form.movie_pack.label(class="form-control-label") }}
+  {% if form.movie_pack.errors %}
+    {{ form.movie_pack(class="form-check-input form-control-lg")}}
+      {% for error in form.movie_pack.errors  %}
+        <span>{{error}}</span>
+      {% endfor %}
+  {% else %}
+    {{ form.movie_pack}}
+  {% endif %}
+</div>
+
+<div class="form-group">
+  {{ form.sports_pack.label(class="form-control-label") }}
+  {% if form.sports_pack.errors %}
+    {{ form.sports_pack}}
+      {% for error in form.movie_pack.errors  %}
+        <span>{{error}}</span>
+      {% endfor %}
+  {% else %}
+    {{ form.sports_pack}}
+  {% endif %}
+</div>
+
+<div class="form-group">
+  {{ form.news_pack.label(class="form-control-label") }}
+  {% if form.news_pack.errors %}
+    {{ form.news_pack}}
+      {% for error in form.news_pack.errors  %}
+        <span>{{error}}</span>
+      {% endfor %}
+  {% else %}
+    {{ form.news_pack}}
+  {% endif %}
+</div>
+
+<div class="form-group">
+  {{ form.spanish_pack.label(class="form-control-label") }}
+  {% if form.spanish_pack.errors %}
+    {{ form.spanish_pack}}
+      {% for error in form.spanish_pack.errors  %}
+        <span>{{error}}</span>
+      {% endfor %}
+  {% else %}
+    {{ form.spanish_pack}}
+  {% endif %}
+</div>
+</fieldset>
+<div class="form_group mt-4">
+  {{ form.submit(class='btn-online-info')}}
+</div>
+
+  </form>
+{% endblock %}

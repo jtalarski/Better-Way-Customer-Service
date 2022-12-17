@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}How Can We Help{% endblock %}
+
+
+{% block content %}
+
+<div class="d-flex align-items-center justify-content-center">
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+<fieldset>
+    <legend class="border-bottom mt-3 mb-4 align-items-center">What can we help you with?</legend>
+<div class="input-group input-group-lg">
+    <div class="form-outline">
+        {{ form.help_phrase(class="form-control form-control-lg col-lg-8")}}
+    </div>
+    <button>{{ form.search(class="btn btn-primary")}}
+    <i class="fas fa-search"></i>
+    </button>
+</div>
+
+
+
+</fieldset>
+</div>
+
+{% endblock %}

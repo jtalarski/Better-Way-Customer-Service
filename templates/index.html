@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+<div class="container w-50 mt-5 mx-auto">
+<h1 style="color:orange">Welcome to BetterWay Entertainment</h1>
+    <div class="d-flex justify-content-center mt-3 mb-3">
+        <img src="{{url_for('static', filename='mpiwnicki_pearl.jpg')}}" width="300" height="300" align="middle">
+    </div>
+    <p>Returning customers can <a href="/login"> log in</a> to access their account</p>
+    <p>New customers can <a href="/new_acct">register</a> to setup basic service for their home or office</p>
+</div>
+
+
+{% endblock %}
+

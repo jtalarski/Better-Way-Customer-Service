@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Sign Up For Service{% endblock %}
+
+{% block content %}
+<div class="container w-50 mt-5">
+ <h5 style="background-color:orange">Account Information</h5>
+{%  for item in values %}
+    {% if item.customer==session['id'] %}
+<table class="table table-stripped">
+    <tr>
+        <td>First Name: </td>
+        <td>{{item.fname}}</td>
+    </tr>
+    <tr>
+        <td>Last Name </td>
+        <td>{{item.lname}}</td>
+    </tr>
+    <tr>
+        <td>Telephone: </td>
+        <td>{{item.telephone}}</td>
+    </tr>
+    <tr>
+        <td>Email: </td>
+        <td>{{item.email}}</td>
+    </tr>
+    <tr>
+        <td>Address: </td>
+        <td>{{item.address1}}</td>
+    </tr>
+    {% if address2 %}
+    <tr>
+        <td>Address 2: </td>
+        <td>{{item.address2}}</td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td>City: </td>
+        <td>{{item.city}} {{item.state}} {{item.zip}}</td>
+    </tr>
+</table>
+
+<h5 style="background-color:orange"> Extra Packages</h5>
+<table class="table table-stripped">
+    <tr>
+      <td>Movies Package</td>
+      {% if item.movie_pack==False %}
+        <td>You Do Not Have This</td>
+       {% else %}
+        <td>You have this package</td>
+      {% endif %}
+    </tr>
+     <tr>
+      <td>Sport Package</td>
+      {% if item.sports_pack==False %}
+        <td>You Do Not Have This</td>
+       {% else %}
+        <td>You have this package</td>
+      {% endif %}
+    </tr>
+   <tr>
+      <td>News Package</td>
+      {% if item.news_pack==False %}
+        <td>You Do Not Have This</td>
+       {% else %}
+        <td>You have this package</td>
+      {% endif %}
+    </tr>
+   <tr>
+      <td>Spanish Package</td>
+      {% if item.spanish_pack==False %}
+        <td>You Do Not Have This</td>
+       {% else %}
+        <td>You have this package</td>
+      {% endif %}
+    </tr>
+</table>
+{% endif %}
+{% endfor %}
+<div>
+  <form method="POST" action="">
+{{ form.hidden_tag() }}
+<fieldset>
+<legend class="border-bottom mb-4">Tell Us About Yourself</legend>
+<a style="background-color:lightgrey">Save a record of your account to your computer</a>
+<div class="form-group">
+  {{ form.print_record.label(class="form-control-label") }}
+  {% if form.print_record.errors %}
+    {{ form.print_record(class="form-control form-control-sm is-invalid")}}
+      {% for error in form.print_record.errors  %}
+        <span>{{error}}</span>
+      {% endfor %}
+  {% else %}
+    {{ form.print_record(class="form-control form-control-sm") }}
+  {% endif %}
+</div>
+<div class="form_group mt-4">
+  {{ form.execute(class='btn-online-info')}}
+</div>
+<div class="mt-3"></div>
+<a style="background-color:lightgrey">Delete Account</a>
+<div class="form-group">
+  {{ form.dreaded_delete.label(class="form-control-label") }}
+  {% if form.dreaded_delete.errors %}
+    {{ form.dreaded_delete(class="form-control form-control-sm is-invalid")}}
+      {% for error in form.dreaded_delete.errors  %}
+        <span>{{error}}</span>
+      {% endfor %}
+  {% else %}
+    {{ form.dreaded_delete(class="form-control form-control-sm") }}
+  {% endif %}
+</div>
+<div class="form-group">
+  {{ form.confirm_delete.label(class="form-control-label") }}
+  {% if form.confirm_delete.errors %}
+    {{ form.confirm_delete(class="form-control form-control-sm is-invalid")}}
+      {% for error in form.confirm_delete.errors  %}
+        <span>{{error}}</span>
+      {% endfor %}
+  {% else %}
+    {{ form.confirm_delete(class="form-control form-control-sm") }}
+  {% endif %}
+</div>
+<div class="form_group mt-4">
+  {{ form.execute(class='btn-online-info')}}
+</div>
+</div>
+
+{% endblock %}
