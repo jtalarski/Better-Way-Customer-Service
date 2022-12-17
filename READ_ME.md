@@ -34,8 +34,8 @@ Additional (nine of the following):
 - [x] File I/O
 - [ ] Inner function
 - [ ] Function with arbitrary arguments: args/kwargs
-- [x] install] Collection: List/tuple
-- [X] Collection: Set/dictionary
+- [x] Collection: List/tuple
+- [x] Collection: Set/dictionary
 - [ ] Collection: Array
 - [ ] Case-switch statement
 - [x] Datetime
